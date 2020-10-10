@@ -16,18 +16,32 @@ public class K_th_Beautiful_String {
 			    k=Integer.parseInt(st.nextToken());
 			char a[]=new char[n];
 			Arrays.fill(a, 'a');
-			--k;//for 0 based indexing
-			for(int i=1; ;i++) {
-				if(k<i) {
-					a[n-i-1]=a[n-k-1]='b';
+			for(int i=n-2; i>=0; i--) {
+//		available position of 1st b will be in between [0,n-2]i.e.(n-i-1)=((n-1)-i)	
+				if(k<=(n-i-1)) {
+					a[i]=a[n-k]='b';// if k<=((n-1)-i) it means n-k will be the
+					System.out.println(a);// suitable position for 2nd b
 					break;
 				}
-				k-=i;
+				k-=(n-i-1);//(otherwise remove all the string which have
+//				the leftmost 'b' at the current position)
 			}
-			System.out.println(a);
 		}
 		long end = System.nanoTime(); // Program End
 		System.err.println("Time taken: " + (end - start) / 1000000 + " ms");
+	}
+	static void sol1(int n, int k) {
+		char a[]=new char[n];
+		Arrays.fill(a, 'a');
+		--k;//for 0 based indexing
+		for(int i=1; ;i++) {
+			if(k<i) {
+				a[n-i-1]=a[n-k-1]='b';
+				break;
+			}
+			k-=i;
+		}
+		System.out.println(a);
 	}
 	static void sol(int n, int k) {//O(2^n*n) it will give TLE
 		int c=0;
