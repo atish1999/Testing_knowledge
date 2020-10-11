@@ -17,7 +17,7 @@ public class K_th_Beautiful_String {
 			char a[]=new char[n];
 			Arrays.fill(a, 'a');
 			for(int i=n-2; i>=0; i--) {
-//		available position of 1st b will be in between [0,n-2]i.e.(n-i-1)=((n-1)-i)	
+//		available position of 1st b or leftmost b will be in between [0,n-2]i.e.(n-i-1)=((n-1)-i)	
 				if(k<=(n-i-1)) {
 					a[i]=a[n-k]='b';// if k<=((n-1)-i) it means n-k will be the
 					System.out.println(a);// suitable position for 2nd b
